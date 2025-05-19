@@ -1,0 +1,43 @@
+{
+  "appTitle": "دفتر الجيب",
+  "transactionEntryTitle": "إضافة معاملة",
+  "monthlyReportTitle": "التقرير الشهري",
+  "debtManagementTitle": "إدارة الديون",
+  "settingsTitle": "الإعدادات",
+  
+  "transactionType": "نوع المعاملة",
+  "expense": "مصروف",
+  "debtYouOwe": "دين عليك",
+  "debtOwedToYou": "دين لك",
+  "amount": "المبلغ",
+  "description": "الوصف",
+  "date": "التاريخ",
+  "save": "حفظ",
+  
+  "totalExpenses": "إجمالي المصروفات",
+  "totalDebtsYouOwe": "إجمالي الديون عليك",
+  "totalDebtsOwedToYou": "إجمالي الديون لك",
+  "netBalance": "الرصيد الصافي",
+  
+  "debtStatus": "الحالة",
+  "paid": "مدفوع",
+  "unpaid": "غير مدفوع",
+  "markAsPaid": "تحديد كمدفوع",
+  "edit": "تعديل",
+  "delete": "حذف",
+  
+  "language": "اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "currency": "العملة",
+  "darkMode": "الوضع الداكن",
+  
+  "noTransactions": "لا توجد معاملات",
+  "noDebts": "لا توجد ديون",
+  
+  "enterAmount": "الرجاء إدخال المبلغ",
+  "enterDescription": "الرجاء إدخال الوصف",
+  "transactionSaved": "تم حفظ المعاملة بنجاح",
+  "transactionDeleted": "تم حذف المعاملة بنجاح",
+  "debtMarkedAsPaid": "تم تحديد الدين كمدفوع"
+}

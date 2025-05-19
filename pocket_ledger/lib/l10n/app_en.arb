@@ -1,0 +1,43 @@
+{
+  "appTitle": "Pocket Ledger",
+  "transactionEntryTitle": "Add Transaction",
+  "monthlyReportTitle": "Monthly Report",
+  "debtManagementTitle": "Debt Management",
+  "settingsTitle": "Settings",
+  
+  "transactionType": "Transaction Type",
+  "expense": "Expense",
+  "debtYouOwe": "Debt You Owe",
+  "debtOwedToYou": "Debt Owed to You",
+  "amount": "Amount",
+  "description": "Description",
+  "date": "Date",
+  "save": "Save",
+  
+  "totalExpenses": "Total Expenses",
+  "totalDebtsYouOwe": "Total Debts You Owe",
+  "totalDebtsOwedToYou": "Total Debts Owed to You",
+  "netBalance": "Net Balance",
+  
+  "debtStatus": "Status",
+  "paid": "Paid",
+  "unpaid": "Unpaid",
+  "markAsPaid": "Mark as Paid",
+  "edit": "Edit",
+  "delete": "Delete",
+  
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "currency": "Currency",
+  "darkMode": "Dark Mode",
+  
+  "noTransactions": "No transactions found",
+  "noDebts": "No debts found",
+  
+  "enterAmount": "Please enter an amount",
+  "enterDescription": "Please enter a description",
+  "transactionSaved": "Transaction saved successfully",
+  "transactionDeleted": "Transaction deleted successfully",
+  "debtMarkedAsPaid": "Debt marked as paid"
+}
