@@ -2,7 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-import '../models/transaction.dart';
+import '../models/transaction.dart' as model;
 
 class DatabaseService {
   static final DatabaseService _instance = DatabaseService._internal();
@@ -45,7 +45,7 @@ class DatabaseService {
   // CRUD operations for transactions
 
   // Create
-  Future<int> insertTransaction(Transaction transaction) async {
+  Future<int> insertTransaction(model.Transaction transaction) async {
     final db = await database;
     return await db.insert(
       'transactions',
@@ -55,16 +55,16 @@ class DatabaseService {
   }
 
   // Read
-  Future<List<Transaction>> getTransactions() async {
+  Future<List<model.Transaction>> getTransactions() async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('transactions');
     return List.generate(maps.length, (i) {
-      return Transaction.fromMap(maps[i]);
+      return model.Transaction.fromMap(maps[i]);
     });
   }
 
   // Read transactions by type
-  Future<List<Transaction>> getTransactionsByType(TransactionType type) async {
+  Future<List<model.Transaction>> getTransactionsByType(model.TransactionType type) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       'transactions',
@@ -72,12 +72,12 @@ class DatabaseService {
       whereArgs: [type.index],
     );
     return List.generate(maps.length, (i) {
-      return Transaction.fromMap(maps[i]);
+      return model.Transaction.fromMap(maps[i]);
     });
   }
 
   // Read transactions by month and year
-  Future<List<Transaction>> getTransactionsByMonth(int month, int year) async {
+  Future<List<model.Transaction>> getTransactionsByMonth(int month, int year) async {
     final db = await database;
     final startDate = DateTime(year, month, 1);
     final endDate = DateTime(year, month + 1, 0);
@@ -88,12 +88,12 @@ class DatabaseService {
       whereArgs: [startDate.toIso8601String(), endDate.toIso8601String()],
     );
     return List.generate(maps.length, (i) {
-      return Transaction.fromMap(maps[i]);
+      return model.Transaction.fromMap(maps[i]);
     });
   }
 
   // Update
-  Future<int> updateTransaction(Transaction transaction) async {
+  Future<int> updateTransaction(model.Transaction transaction) async {
     final db = await database;
     return await db.update(
       'transactions',
@@ -117,24 +117,24 @@ class DatabaseService {
   Future<double> getTotalExpensesForMonth(int month, int year) async {
     final transactions = await getTransactionsByMonth(month, year);
     return transactions
-        .where((t) => t.type == TransactionType.expense)
-        .fold(0, (sum, t) => sum + t.amount);
+        .where((t) => t.type == model.TransactionType.expense)
+        .fold<double>(0.0, (double sum, model.Transaction t) => sum + t.amount);
   }
 
   // Get total debts you owe for a month
   Future<double> getTotalDebtsYouOweForMonth(int month, int year) async {
     final transactions = await getTransactionsByMonth(month, year);
     return transactions
-        .where((t) => t.type == TransactionType.debtYouOwe && !t.isPaid)
-        .fold(0, (sum, t) => sum + t.amount);
+        .where((t) => t.type == model.TransactionType.debtYouOwe && !t.isPaid)
+        .fold<double>(0.0, (double sum, model.Transaction t) => sum + t.amount);
   }
 
   // Get total debts owed to you for a month
   Future<double> getTotalDebtsOwedToYouForMonth(int month, int year) async {
     final transactions = await getTransactionsByMonth(month, year);
     return transactions
-        .where((t) => t.type == TransactionType.debtOwedToYou && !t.isPaid)
-        .fold(0, (sum, t) => sum + t.amount);
+        .where((t) => t.type == model.TransactionType.debtOwedToYou && !t.isPaid)
+        .fold<double>(0.0, (double sum, model.Transaction t) => sum + t.amount);
   }
 
   // Get net balance for a month
